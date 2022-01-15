@@ -1,0 +1,2 @@
+System.register(["./chunk-vendor.js"],function(){"use strict";var n;return{setters:[function(t){n=t.a}],execute:function(){n("change",".js-profile-editable-pronouns-select",function(){const t=document.querySelector(".js-profile-editable-pronouns-select"),e=document.querySelector(".js-profile-editable-pronouns-custom"),u=e.getAttribute("data-initial-value");t.value==="Custom"?([...t.options].find(o=>o.value===u)?e.value="":e.value=u,e.hidden=!1,e.focus()):(e.value=t.value,e.hidden=!0)})}}});
+//# sourceMappingURL=chunk-profile-46ae42d4.js.map
