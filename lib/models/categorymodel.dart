@@ -1,7 +1,8 @@
 class CategoryModel {
  
-  var img;
+  
+  String img;
   String categoryName;
 
-  CategoryModel({this.img, required this.categoryName});
+  CategoryModel({required this.img, required this.categoryName});
 }

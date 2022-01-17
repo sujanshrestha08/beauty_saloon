@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:touchofbeauty_flutter/screens/homepage2.dart';
 import 'package:touchofbeauty_flutter/screens/onboardingscreen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -28,7 +29,7 @@ class _MyAppState extends State<MyApp> {
       initialRoute: initScreen == 0 || initScreen == null ? 'onboard' : 'home',
 
       routes: {
-        'home': (context) => OnBoardingPage(),
+        'home': (context) => HomePage2(),
         'onboard': (context) => OnBoardingPage()
       },
     );
