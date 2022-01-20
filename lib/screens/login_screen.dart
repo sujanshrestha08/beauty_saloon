@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:touchofbeauty_flutter/screens/homepage1.dart';
 import 'package:touchofbeauty_flutter/screens/homepage2.dart';
 import 'package:touchofbeauty_flutter/screens/signup_screen.dart';
 import 'package:form_field_validator/form_field_validator.dart';

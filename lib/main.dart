@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:touchofbeauty_flutter/screens/about.dart';
+import 'package:touchofbeauty_flutter/screens/faqs.dart';
 import 'package:touchofbeauty_flutter/screens/homepage2.dart';
 import 'package:touchofbeauty_flutter/screens/onboardingscreen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -30,7 +32,9 @@ class _MyAppState extends State<MyApp> {
 
       routes: {
         'home': (context) => HomePage2(),
-        'onboard': (context) => OnBoardingPage()
+        'onboard': (context) => OnBoardingPage(),
+        '/about': (context) => AboutPage(),
+        '/faqs': (context) => FAQS(),
       },
     );
   }

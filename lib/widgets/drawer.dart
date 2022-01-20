@@ -9,12 +9,12 @@ class DrawerSlide extends StatefulWidget {
 }
 
 class _DrawerSlideState extends State<DrawerSlide> {
-  int _selected = 0;
-  void changeSelected(int index) {
-    setState(() {
-      _selected = index;
-    });
-  }
+  // int _selected = 0;
+  // void changeSelected(int index) {
+  //   setState(() {
+  //     _selected = index;
+  //   });
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -54,36 +54,40 @@ class _DrawerSlideState extends State<DrawerSlide> {
             ),
           ),
           ListTile(
-              selected: _selected == 0,
+              // selected: _selected == 0,
               leading: const Icon(
                 Icons.question_answer,
-                size: 30,
+                size: 26,
               ),
               title: const Text(
                 'FAQs',
-                style: TextStyle(fontSize: 18),
+                style: TextStyle(fontSize: 16),
               ),
-              onTap: () {}),
+              onTap: () {
+                Navigator.pushNamed(context, '/faqs');
+              }),
           ListTile(
-              selected: _selected == 1,
+              // selected: _selected == 1,
               leading: const Icon(
                 Icons.feedback_rounded,
-                size: 30,
+                size: 26,
               ),
               title: const Text(
                 'About Us',
-                style: TextStyle(fontSize: 18),
+                style: TextStyle(fontSize: 16),
               ),
-              onTap: () {}),
+              onTap: () {
+                Navigator.pushNamed(context, '/about');
+              }),
           ListTile(
-              selected: _selected == 2,
+              // selected: _selected == 2,
               leading: const Icon(
                 Icons.contact_phone,
-                size: 30,
+                size: 26,
               ),
               title: const Text(
                 'Contact Us',
-                style: TextStyle(fontSize: 18),
+                style: TextStyle(fontSize: 16),
               ),
               onTap: () {}),
           const Divider(
@@ -95,37 +99,37 @@ class _DrawerSlideState extends State<DrawerSlide> {
               "Find Us On:",
               style: TextStyle(
                 color: Colors.black54,
-                fontSize: 18,
+                fontSize: 16,
                 fontWeight: FontWeight.w500,
               ),
             ),
           ),
           ListTile(
-            selected: _selected == 2,
+            // selected: _selected == 2,
             leading: const Icon(
               Icons.facebook,
-              size: 30,
+              size: 26,
             ),
             title: const Text(
               'Facebook',
-              style: TextStyle(fontSize: 18),
+              style: TextStyle(fontSize: 16),
             ),
             onTap: () {
-              changeSelected(2);
+              // changeSelected(2);
             },
           ),
           ListTile(
-            selected: _selected == 3,
+            // selected: _selected == 3,
             leading: const Icon(
               Icons.web,
-              size: 30,
+              size: 26,
             ),
             title: const Text(
               'Website',
-              style: TextStyle(fontSize: 18),
+              style: TextStyle(fontSize: 16),
             ),
             onTap: () {
-              changeSelected(3);
+              // changeSelected(3);
             },
           ),
         ],

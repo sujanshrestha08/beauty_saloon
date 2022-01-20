@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:introduction_screen/introduction_screen.dart';
-import 'package:touchofbeauty_flutter/screens/homepage.dart';
-import 'package:touchofbeauty_flutter/screens/homepage1.dart';
 import 'package:touchofbeauty_flutter/screens/homepage2.dart';
 import 'package:touchofbeauty_flutter/screens/login_screen.dart';
 
