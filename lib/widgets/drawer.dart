@@ -89,7 +89,9 @@ class _DrawerSlideState extends State<DrawerSlide> {
                 'Contact Us',
                 style: TextStyle(fontSize: 16),
               ),
-              onTap: () {}),
+              onTap: () {
+                Navigator.pushNamed(context, '/contact');
+              }),
           const Divider(
             thickness: 3,
           ),

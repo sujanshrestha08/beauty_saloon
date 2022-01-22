@@ -1,74 +1,35 @@
+import 'dart:convert';
+
 class AllServicesModel {
-  String img;
-  String serviceName;
-  String time;
+  int id;
+  String name;
+  String duration;
   int price;
-  String addcart;
+  String description;
+  String image;
 
-  AllServicesModel(
-      {required this.img,
-      required this.serviceName,
-      required this.time,
-      required this.price,
-      required this.addcart});
-}
+  AllServicesModel({
+    required this.id,
+    required this.name,
+    required this.duration,
+    required this.price,
+    required this.description,
+    required this.image,
+  });
 
-class SkinServicesModel {
-  String img;
-  String serviceName;
-  String time;
-  int price;
-  String addcart;
+  factory AllServicesModel.fromJson(Map<String, dynamic> json) =>
+      AllServicesModel(
+        id: json["id"],
+        name: json["sname"],
+        duration: json["sduration"],
+        price: json["sprice"],
+        description: json["sdescription"],
+        image: json["simage"],
+      );
 
-  SkinServicesModel(
-      {required this.img,
-      required this.serviceName,
-      required this.time,
-      required this.price,
-      required this.addcart});
-}
-
-class MakeupServicesModel {
-  String img;
-  String serviceName;
-  String time;
-  int price;
-  String addcart;
-
-  MakeupServicesModel(
-      {required this.img,
-      required this.serviceName,
-      required this.time,
-      required this.price,
-      required this.addcart});
-}
-
-class HairServicesModel {
-  String img;
-  String serviceName;
-  String time;
-  int price;
-  String addcart;
-
-  HairServicesModel(
-      {required this.img,
-      required this.serviceName,
-      required this.time,
-      required this.price,
-      required this.addcart});
-}
-
-class NailServicesModel {
-  String img;
-  String serviceName;
-  String time;
-  int price;
-  String addcart;
-
-  NailServicesModel(
-      {required this.img,
-      required this.serviceName,
-      required this.time,
-      required this.price,
-      required this.addcart});
+  Map<String, dynamic> toJson() => {
+        "id": id,
+        "name": name,
+        "image": image,
+      };
 }

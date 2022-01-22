@@ -25,207 +25,51 @@ List<CategoryModel> getCategory() {
 //   Category(this.img, this.categoryName, this.servicedata);
 // }
 
-// class CategoryService {
-//   static List<Category> allData = [
-//     Category(All, "All", [
-//       AllServicesModel(
-//           img: All,
-//           serviceName: 'Keratin Straight',
-//           time: '3 hrs',
-//           price: 5000,
-//           addcart: 'Add to cart'),
-//       AllServicesModel(
-//           img: All,
-//           serviceName: 'Hair Style',
-//           time: '45 Min',
-//           price: 500,
-//           addcart: 'Add to cart'),
-//       AllServicesModel(
-//           img: All,
-//           serviceName: 'Change Hair Color',
-//           time: '1 hr',
-//           price: 1000,
-//           addcart: 'Add to cart'),
-//       AllServicesModel(
-//           img: All,
-//           serviceName: 'Hair Style',
-//           time: '45 Min',
-//           price: 500,
-//           addcart: 'Add to cart'),
-//       AllServicesModel(
-//           img: All,
-//           serviceName: 'Hair Straightening',
-//           time: '3 hrs',
-//           price: 3500,
-//           addcart: 'Add to cart'),
-//       AllServicesModel(
-//           img: All,
-//           serviceName: 'Hair Cutting',
-//           time: '20 mins',
-//           price: 400,
-//           addcart: 'Add to cart'),
-//       AllServicesModel(
-//           img: All,
-//           serviceName: 'Hair Style',
-//           time: '45 Min',
-//           price: 500,
-//           addcart: 'Add to cart'),
-//     ]),
-//     Category(SkinCare, "Skin Care", [
-//       AllServicesModel(
-//           img: All,
-//           serviceName: 'Keratin Straight',
-//           time: '3 hrs',
-//           price: 5000,
-//           addcart: 'Add to cart'),
-//       AllServicesModel(
-//           img: All,
-//           serviceName: 'Hair Style',
-//           time: '45 Min',
-//           price: 500,
-//           addcart: 'Add to cart'),
-//       AllServicesModel(
-//           img: All,
-//           serviceName: 'Change Hair Color',
-//           time: '1 hr',
-//           price: 1000,
-//           addcart: 'Add to cart'),
-//       AllServicesModel(
-//           img: All,
-//           serviceName: 'Hair Style',
-//           time: '45 Min',
-//           price: 500,
-//           addcart: 'Add to cart'),
-//       AllServicesModel(
-//           img: All,
-//           serviceName: 'Hair Straightening',
-//           time: '3 hrs',
-//           price: 3500,
-//           addcart: 'Add to cart'),
-//       AllServicesModel(
-//           img: All,
-//           serviceName: 'Hair Cutting',
-//           time: '20 mins',
-//           price: 400,
-//           addcart: 'Add to cart'),
-//       AllServicesModel(
-//           img: All,
-//           serviceName: 'Hair Style',
-//           time: '45 Min',
-//           price: 500,
-//           addcart: 'Add to cart'),
-//     ])
-//   ];
-// }
+class CategoryService {
+  String name;
+  String image;
+  List<String> servicedata;
 
-// class Category with ChangeNotifier {
-//   List<CategoryModel> categories = [
-//     CategoryModel(img: All, categoryName: "All"),
-//     CategoryModel(img: SkinCare, categoryName: 'Skin Care')
-//   ];
-// }
-
-// List<CategoryModel> get categories {
-
-//     return [...categories];
-
-//   }
-
-List<AllServicesModel> getAllServicesList() {
-  List<AllServicesModel> allservicesList = <AllServicesModel>[];
-  allservicesList.add(AllServicesModel(
-      img: All,
-      serviceName: 'Keratin Straight',
-      time: '3 hrs',
-      price: 5000,
-      addcart: 'Add to cart'));
-  allservicesList.add(AllServicesModel(
-      img: All,
-      serviceName: 'Hair Style',
-      time: '45 Min',
-      price: 500,
-      addcart: 'Add to cart'));
-  allservicesList.add(AllServicesModel(
-      img: All,
-      serviceName: 'Change Hair Color',
-      time: '1 hr',
-      price: 1000,
-      addcart: 'Add to cart'));
-  allservicesList.add(AllServicesModel(
-      img: All,
-      serviceName: 'Hair Cutting',
-      time: '20 mins',
-      price: 400,
-      addcart: 'Add to cart'));
-  allservicesList.add(AllServicesModel(
-      img: All,
-      serviceName: 'Keratin Straight',
-      time: '3 hrs',
-      price: 5000,
-      addcart: 'Add to cart'));
-  allservicesList.add(AllServicesModel(
-      img: All,
-      serviceName: 'Hair Straightening',
-      time: '3 hrs',
-      price: 3500,
-      addcart: 'Add to cart'));
-  return allservicesList;
+  CategoryService(this.name, this.image, this.servicedata);
 }
 
-List<SkinServicesModel> getSkinServicesList() {
-  List<SkinServicesModel> skinservicesList = <SkinServicesModel>[];
-  skinservicesList.add(SkinServicesModel(
-      img: All,
-      serviceName: 'Lotus Fruit Facial',
-      time: '45 Min',
-      price: 1300,
-      addcart: 'Add to cart'));
-  skinservicesList.add(SkinServicesModel(
-      img: All,
-      serviceName: 'Lotus Basic Cleansing',
-      time: '30 mins',
-      price: 900,
-      addcart: 'Add to cart'));
-  skinservicesList.add(SkinServicesModel(
-      img: All,
-      serviceName: 'Lotus Glowdermie',
-      time: '55 mins',
-      price: 1600,
-      addcart: 'Add to cart'));
-  skinservicesList.add(SkinServicesModel(
-      img: All,
-      serviceName: 'Lotus 4 Layers',
-      time: '1 hr',
-      price: 2200,
-      addcart: 'Add to cart'));
-  return skinservicesList;
+class CategoryServiceList {
+  static List<CategoryService> allData = [
+    CategoryService("All", All, ["A", "B", "C", "D"]),
+    CategoryService("Skin Care", SkinCare, ["E", "F", "G", "H"]),
+    CategoryService(
+        "Makeup",
+        "https://images.unsplash.com/photo-1599948128020-9a44505b0d1b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fG5haWwlMjBwb2xpc2h8ZW58MHx8MHx8&auto=format&fit=crop&w=600&q=60",
+        ["I", "J", "K", "L"]),
+    CategoryService(
+        "Hair Color",
+        "https://images.unsplash.com/photo-1599948128020-9a44505b0d1b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fG5haWwlMjBwb2xpc2h8ZW58MHx8MHx8&auto=format&fit=crop&w=600&q=60",
+        ["M", "N", "O", "P"]),
+    CategoryService(
+        "Nails",
+        "https://images.unsplash.com/photo-1599948128020-9a44505b0d1b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fG5haWwlMjBwb2xpc2h8ZW58MHx8MHx8&auto=format&fit=crop&w=600&q=60",
+        ["A", "B", "C", "D"]),
+    CategoryService(
+        "Waxing",
+        "https://images.unsplash.com/photo-1599948128020-9a44505b0d1b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fG5haWwlMjBwb2xpc2h8ZW58MHx8MHx8&auto=format&fit=crop&w=600&q=60",
+        ["A", "B", "C", "D"]),
+  ];
 }
 
-List<SkinServicesModel> getHairServicesList() {
-  List<SkinServicesModel> skinservicesList = <SkinServicesModel>[];
-  skinservicesList.add(SkinServicesModel(
-      img: All,
-      serviceName: 'Lotus Fruit Facial',
-      time: '45 Min',
-      price: 1300,
-      addcart: 'Add to cart'));
-  skinservicesList.add(SkinServicesModel(
-      img: All,
-      serviceName: 'Lotus Basic Cleansing',
-      time: '30 mins',
-      price: 900,
-      addcart: 'Add to cart'));
-  skinservicesList.add(SkinServicesModel(
-      img: All,
-      serviceName: 'Lotus Glowdermie',
-      time: '55 mins',
-      price: 1600,
-      addcart: 'Add to cart'));
-  skinservicesList.add(SkinServicesModel(
-      img: All,
-      serviceName: 'Lotus 4 Layers',
-      time: '1 hr',
-      price: 2200,
-      addcart: 'Add to cart'));
-  return skinservicesList;
+class Service {
+  String name;
+  String image;
+  int price;
+  String duration;
+  String description;
+
+  Service(this.name, this.image, this.price, this.duration, this.description);
+}
+
+class ServiceList {
+  static List<Service> allServiceData = [
+    Service("Gel Polish", All, 1000, "30 mins", "nksjdnk"),
+    Service("French Nail", All, 1500, "30 mins", "nksjrkjfjdnk"),
+
+  ];
 }

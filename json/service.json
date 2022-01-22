@@ -1,0 +1,23 @@
+[
+    {
+        "id":1,
+        "sname":"Gel Nail",
+        "sduration":"3 hrs",
+        "sprice":1500,
+        "sdescription":"cnerjnckejnce",
+        "simage":"https://images.unsplash.com/photo-1599948128020-9a44505b0d1b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fG5haWwlMjBwb2xpc2h8ZW58MHx8MHx8&auto=format&fit=crop&w=600&q=60"
+
+
+    },
+    {
+        "id":2,
+        "sname":"French Gel Nail",
+        "sduration":"3 hrs",
+        "sprice":1600,
+        "sdescription":"cnerjnckejnce",
+        "simage":"https://images.unsplash.com/photo-1599948128020-9a44505b0d1b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fG5haWwlMjBwb2xpc2h8ZW58MHx8MHx8&auto=format&fit=crop&w=600&q=60"
+
+
+    }
+
+]

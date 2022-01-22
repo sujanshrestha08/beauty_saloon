@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:touchofbeauty_flutter/screens/about.dart';
+import 'package:touchofbeauty_flutter/screens/contact.dart';
 import 'package:touchofbeauty_flutter/screens/faqs.dart';
-import 'package:touchofbeauty_flutter/screens/homepage2.dart';
+import 'package:touchofbeauty_flutter/screens/homepage.dart';
+// import 'package:touchofbeauty_flutter/screens/homepage2.dart';
 import 'package:touchofbeauty_flutter/screens/onboardingscreen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -31,10 +33,11 @@ class _MyAppState extends State<MyApp> {
       initialRoute: initScreen == 0 || initScreen == null ? 'onboard' : 'home',
 
       routes: {
-        'home': (context) => HomePage2(),
+        'home': (context) => HomePage(),
         'onboard': (context) => OnBoardingPage(),
         '/about': (context) => AboutPage(),
         '/faqs': (context) => FAQS(),
+        '/contact': (context) => ContactPage(),
       },
     );
   }

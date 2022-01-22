@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:touchofbeauty_flutter/screens/homepage.dart';
 import 'package:touchofbeauty_flutter/screens/homepage2.dart';
 import 'package:touchofbeauty_flutter/screens/signup_screen.dart';
 import 'package:form_field_validator/form_field_validator.dart';
@@ -127,7 +128,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         // Navigator.pushNamed(context, '/third');
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => HomePage2()),
+                          MaterialPageRoute(builder: (context) => HomePage()),
                         );
                       }
                     },

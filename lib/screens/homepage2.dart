@@ -27,7 +27,6 @@ class _HomePage2State extends State<HomePage2> {
   void initState() {
     super.initState();
     categoryList = getCategory();
-    allserviceList = getAllServicesList();
   }
 
   @override
@@ -111,27 +110,26 @@ class _HomePage2State extends State<HomePage2> {
                   itemCount: categoryList.length,
                   scrollDirection: Axis.horizontal,
                   itemBuilder: (BuildContext context, int index) {
-                    return Container(
-                      margin: const EdgeInsets.all(8),
-                      child: Column(
-                        children: <Widget>[
-                          Image.asset(categoryList[index].img,
-                              height: 60, width: 60),
-                          TextButton(
-                            onPressed: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => AllService()));
-                            },
-                            child: Text(categoryList[index].categoryName,
+                    return GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => AllService(),
+                                settings: RouteSettings(
+                                    arguments: categoryList[index])));
+                      },
+                      child: Container(
+                        margin: const EdgeInsets.all(8),
+                        child: Column(
+                          children: <Widget>[
+                            Image.asset(categoryList[index].img,
+                                height: 60, width: 60),
+                            Text(categoryList[index].categoryName,
                                 style: const TextStyle(
                                     color: Colors.black, fontSize: 14)),
-                          ),
-                          // Text(categoryList[index].categoryName,
-                          //     style: const TextStyle(
-                          //         color: Colors.black, fontSize: 14)),
-                        ],
+                          ],
+                        ),
                       ),
                     );
                   },
@@ -162,7 +160,7 @@ class _HomePage2State extends State<HomePage2> {
               //                 Navigator.push(
               //                     context,
               //                     MaterialPageRoute(
-              //                         builder: (context) => AllService(
+              //                         builder: (context) =>Services(
               //                             datas: CategoryService
               //                                 .allData[index].servicedata)));
               //               },

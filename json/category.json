@@ -1,0 +1,32 @@
+[
+    {
+        "id":1,
+        "image":"https://images.unsplash.com/photo-1560869713-7d0a29430803?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=326&q=80",
+        "name":"All"
+    },
+    {
+        "id":2,
+        "image":"https://images.unsplash.com/photo-1642005799634-5d1bc2829b03?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
+        "name":"Skin Care"
+    },
+    {
+        "id":3,
+        "image":"https://images.unsplash.com/photo-1596462502278-27bfdc403348?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bWFrZXVwfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=600&q=60",
+        "name":"Make Up "
+    },
+    {
+        "id":4,
+        "image":"https://images.unsplash.com/photo-1555502561-7b22493a818f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8aGFpciUyMGNvbG9yJTIwdHViZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=600&q=60",
+        "name":"Hair Color"
+    },
+    {
+        "id":5,
+        "image":"https://images.unsplash.com/photo-1599948128020-9a44505b0d1b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fG5haWwlMjBwb2xpc2h8ZW58MHx8MHx8&auto=format&fit=crop&w=600&q=60",
+        "name":"Nails"
+    },
+    {
+        "id":6,
+        "image":"https://img.freepik.com/free-photo/beautiful-young-girl-beauty-salon_1157-21122.jpg?size=338&ext=jpg",
+        "name":"Waxing"
+    }
+]

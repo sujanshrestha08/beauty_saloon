@@ -1,6 +1,9 @@
-// ignore_for_file: deprecated_member_use
-
 import 'package:flutter/material.dart';
+import 'package:touchofbeauty_flutter/models/categorymodel.dart';
+import 'package:touchofbeauty_flutter/models/servicemodel.dart';
+import 'package:touchofbeauty_flutter/screens/allservice.dart';
+import 'package:touchofbeauty_flutter/screens/allservice1.dart';
+import 'package:touchofbeauty_flutter/utils/dataProvider.dart';
 import 'package:touchofbeauty_flutter/widgets/drawer.dart';
 
 class HomePage extends StatefulWidget {
@@ -12,124 +15,305 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int currrentIndex = 0;
-  final List<Widget> _children = [];
+
+  int _selectedIndex = 0;
+
+  late List<CategoryModel> categoryList;
+  late List<AllServicesModel> allserviceList;
+
+  @override
+  void initState() {
+    super.initState();
+    categoryList = getCategory();
+  }
+
   @override
   Widget build(BuildContext context) {
-    //it will provide the total height and width of our screen
-    // Size size = MediaQuery.of(context).size;
-    return Scaffold(
-      appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(220),
-        child: AppBar(
-          flexibleSpace: FlexibleSpaceBar(
-            background: ClipRRect(
-              borderRadius: const BorderRadius.only(
-                  bottomRight: Radius.circular(36),
-                  bottomLeft: Radius.circular(36)),
-              child: Stack(overflow: Overflow.visible, children: [
-                Container(
-                  decoration: const BoxDecoration(
-                      image: DecorationImage(
-                          image: AssetImage('assets/appbarimage.jpg'),
-                          fit: BoxFit.fill),
-                      color: Colors.amber,
-                      borderRadius: BorderRadius.only(
-                          bottomLeft: Radius.circular(36),
-                          bottomRight: Radius.circular(36))),
+    Size size = MediaQuery.of(context).size;
+    return SafeArea(
+      child: Scaffold(
+        drawer: const DrawerSlide(),
+        appBar: AppBar(
+          backgroundColor: Colors.white,
+          leading: Builder(builder: (context) {
+            return IconButton(
+                onPressed: () {
+                  Scaffold.of(context).openDrawer();
+                },
+                icon: const Icon(
+                  Icons.menu,
+                  color: Colors.grey,
+                ));
+          }),
+          title: Row(
+            children: [
+              const SizedBox(width: 5),
+              Container(
+                height: 46,
+                width: 250,
+                decoration: const BoxDecoration(
+                  color: Colors.white70,
                 ),
-                Positioned(
-                  bottom: -20,
-                  left: 0,
-                  right: 0,
-                  child: Container(
-                    margin: const EdgeInsets.symmetric(horizontal: 20.0),
-                    height: 54,
-                    decoration: BoxDecoration(
-                        color: Colors.blue,
-                        borderRadius: BorderRadius.circular(30),
-                        boxShadow: const [
-                          BoxShadow(
-                            offset: Offset(0, 10),
-                            blurRadius: 50,
-                          )
-                        ]),
-                    child: TextField(
-                      decoration: InputDecoration(
-                          hintText: 'Search...',
-                          hintStyle: TextStyle(color: Colors.pink),
-                          border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(30))),
-                    ),
+                child: const TextField(
+                  decoration: InputDecoration(
+                    border: InputBorder.none,
+                    hintText: 'Search...',
+                    hintStyle: TextStyle(color: Colors.black54),
                   ),
                 ),
-              ]),
-            ),
+              ),
+              const SizedBox(width: 5),
+              Container(
+                height: 46,
+                width: 20,
+                child: const TextField(
+                  decoration: InputDecoration(icon: Icon(Icons.search)),
+                ),
+              ),
+            ],
           ),
-          shape: const RoundedRectangleBorder(
-              borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(30),
-                  bottomRight: Radius.circular(30))),
         ),
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              Container(
+                margin: EdgeInsets.only(bottom: 10),
+                height: size.height * 0.25,
+                decoration: const BoxDecoration(
+                    image: DecorationImage(
+                      image: AssetImage('assets/appbarimage.jpg'),
+                      fit: BoxFit.fill,
+                    ),
+                    borderRadius: BorderRadius.only(
+                        bottomLeft: Radius.circular(10),
+                        bottomRight: Radius.circular(10))),
+              ),
+
+              // category container starts
+
+              Padding(
+                padding: const EdgeInsets.only(top: 10, left: 15),
+                child: Row(
+                  children: const [
+                    Text('Categories',
+                        style: TextStyle(
+                            fontSize: 16, fontWeight: FontWeight.w500))
+                  ],
+                ),
+              ),
+              const SizedBox(height: 10),
+
+              Container(
+                height: 100,
+                child: ListView(
+                  shrinkWrap: true,
+                  scrollDirection: Axis.horizontal,
+                  children: [
+                    GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => AllService()));
+                        },
+                        child: Container(
+                          child: Column(
+                            children: [
+                              Container(
+                                  height: 80,
+                                  width: 80,
+                                  child: Image.asset('assets/allcategory.jpg')),
+                              Text('All')
+                            ],
+                          ),
+                        )),
+                    GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => AllService()));
+                        },
+                        child: Container(
+                          child: Column(
+                            children: [
+                              Container(
+                                  height: 80,
+                                  width: 80,
+                                  child: Image.asset(
+                                      'assets/skincarecategory.jpg')),
+                              Text('Skin Care')
+                            ],
+                          ),
+                        )),
+                    GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => AllService()));
+                        },
+                        child: Container(
+                          child: Column(
+                            children: [
+                              Container(
+                                  height: 80,
+                                  width: 80,
+                                  child:
+                                      Image.asset('assets/makeupcategory.jpg')),
+                              Text('Make Up')
+                            ],
+                          ),
+                        )),
+                    GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => AllService()));
+                        },
+                        child: Container(
+                          child: Column(
+                            children: [
+                              Container(
+                                  height: 80,
+                                  width: 80,
+                                  child: Image.asset(
+                                      'assets/haircolorcategory.jpg')),
+                              Text('Hair Color')
+                            ],
+                          ),
+                        )),
+                    GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => AllService()));
+                        },
+                        child: Container(
+                          child: Column(
+                            children: [
+                              Container(
+                                  height: 80,
+                                  width: 80,
+                                  child:
+                                      Image.asset('assets/nailcategory.jpg')),
+                              Text('Nails')
+                            ],
+                          ),
+                        )),
+                    GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => AllService()));
+                        },
+                        child: Container(
+                          child: Column(
+                            children: [
+                              Container(
+                                  height: 80,
+                                  width: 80,
+                                  child:
+                                      Image.asset('assets/waxingcategory.jpg')),
+                              Text('Waxing')
+                            ],
+                          ),
+                        )),
+                  ],
+                ),
+              )
+
+              // Container(
+              //   height: 150,
+              //   child: ListView.builder(
+              //     padding: const EdgeInsets.all(12),
+              //     itemCount: CategoryServiceList.allData.length,
+              //     scrollDirection: Axis.horizontal,
+              //     itemBuilder: (BuildContext context, int index) {
+              //       return GestureDetector(
+              //         onTap: () {
+              //           Navigator.push(
+              //               context,
+              //               MaterialPageRoute(
+              //                   builder: (context) => Services(
+              //                     title: CategoryServiceList.allData[index].name,
+              //                     datas: CategoryServiceList.allData[index].servicedata,
+              //                   ),
+
+              //                   ));
+              //         },
+              //         child: Container(
+              //           margin: const EdgeInsets.all(8),
+              //           child: Column(
+              //             children: <Widget>[
+              //               Image.asset(CategoryServiceList.allData[index].image,
+              //                   height: 60, width: 60),
+              //               Text(CategoryServiceList.allData[index].name,
+              //                   style: const TextStyle(
+              //                       color: Colors.black, fontSize: 14)),
+              //             ],
+              //           ),
+              //         ),
+              //       );
+              //     },
+              //   ),
+              // ),
+            ],
+          ),
+        ),
+
+        // Container(
+        //   height: 100,
+        //   child: ListView.builder(
+        //     padding: EdgeInsets.all(8),
+        //     itemCount: categoryList.length,
+        //     scrollDirection: Axis.horizontal,
+        //     itemBuilder: (BuildContext context, int index) {
+        //       return Container(
+        //         margin: EdgeInsets.all(8),
+        //         child: Column(
+        //           children: <Widget>[
+        //             Image.asset(categoryList[index].img,
+        //                 height: 40, width: 40),
+        //             // 8.height,
+        //             Text(categoryList[index].categoryName,
+        //                 style:
+        //                     TextStyle(color: Colors.black, fontSize: 14))
+        //           ],
+        //         ),
+        //       );
+        //     },
+        //   ),
+        // ),
+
+        bottomNavigationBar: BottomNavigationBar(
+            type: BottomNavigationBarType.fixed,
+            selectedItemColor: Color(0xFFde8735),
+            // unselectedItemColor: Color(0xFFde8735),
+            currentIndex: currrentIndex,
+            onTap: (index) => setState(() => currrentIndex = index),
+            items: const [
+              BottomNavigationBarItem(
+                icon: Icon(Icons.home),
+                label: 'Home',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.shopping_basket),
+                label: 'Cart',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.schedule),
+                label: 'Appointment',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.person),
+                label: 'Profile',
+              ),
+            ]),
       ),
-      drawer: const DrawerSlide(),
-      //body: _children[currrentIndex],
-      bottomNavigationBar: BottomNavigationBar(
-          type: BottomNavigationBarType.fixed,
-          selectedItemColor: Colors.primaries[0],
-          unselectedItemColor: Colors.indigo.shade300,
-          currentIndex: currrentIndex,
-          onTap: (index) => setState(() => currrentIndex = index),
-          items: const [
-            BottomNavigationBarItem(
-              icon: Icon(Icons.home),
-              label: 'Home',
-              backgroundColor: Colors.blue,
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.shopping_basket),
-              label: 'Cart',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.schedule),
-              label: 'Appointment',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.person),
-              label: 'Profile',
-            ),
-          ]),
     );
   }
 }
-
-
-
-
-// SafeArea(
-//         child: Column(
-//           children: [
-//             Container(
-//               child: Stack(
-//                 children: [
-//                   Positioned(
-//                     child: Container(
-//                       margin: EdgeInsets.symmetric(horizontal: 20.0),
-//                       height: 54,
-//                       decoration: BoxDecoration(
-//                         color: Colors.white70,
-//                         // borderRadius: BorderRadius.circular(20),
-//                       ),
-//                       child: TextField(
-//                         decoration: InputDecoration(
-//                             hintText: 'Search',
-//                             border: OutlineInputBorder(
-//                                 borderRadius: BorderRadius.circular(30))),
-//                       ),
-//                     ),
-//                   )
-//                 ],
-//               ),
-//             )
-//           ],
-//         ),
-//       ),
