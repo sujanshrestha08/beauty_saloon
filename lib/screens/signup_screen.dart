@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:touchofbeauty_flutter/http/httpuser.dart';
+import 'package:touchofbeauty_flutter/models/user.dart';
 import 'package:touchofbeauty_flutter/screens/login_screen.dart';
+import 'package:motion_toast/motion_toast.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({Key? key}) : super(key: key);
@@ -10,10 +13,15 @@ class SignUpScreen extends StatefulWidget {
 
 class _SignUpScreenState extends State<SignUpScreen> {
   final _formkey = GlobalKey<FormState>();
-  TextEditingController fullnameCont = TextEditingController();
-  TextEditingController emailCont = TextEditingController();
-  TextEditingController phoneCont = TextEditingController();
-  TextEditingController passwordCont = TextEditingController();
+  String username = " ";
+  String email = " ";
+  String phone = " ";
+  String password = " ";
+
+  Future<bool> registerUser(User u) {
+    var res = HttpConnectUser().registerPost(u);
+    return res;
+  }
 
   @override
   void dispose() {
@@ -80,10 +88,18 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           BoxShadow(offset: Offset(0, 5), blurRadius: 10)
                         ]),
                     child: TextFormField(
-                      controller: fullnameCont,
-                      decoration: InputDecoration(
+                      validator: (value) {
+                        if (value!.isEmpty) {
+                          return "Please enter some text";
+                        }
+                        return null;
+                      },
+                      onSaved: (value) {
+                        username = value!;
+                      },
+                      decoration: const InputDecoration(
                           icon: Icon(Icons.person, color: Color(0xffF5591F)),
-                          hintText: 'Full Name',
+                          hintText: 'Username',
                           enabledBorder: InputBorder.none,
                           focusedBorder: InputBorder.none),
                     ),
@@ -99,9 +115,17 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           BoxShadow(offset: Offset(0, 5), blurRadius: 10)
                         ]),
                     child: TextFormField(
-                      controller: emailCont,
+                      validator: (value) {
+                        if (value!.isEmpty) {
+                          return "Please enter some text";
+                        }
+                        return null;
+                      },
+                      onSaved: (value) {
+                        email = value!;
+                      },
                       keyboardType: TextInputType.emailAddress,
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                           icon: Icon(Icons.email, color: Color(0xffF5591F)),
                           hintText: 'Enter email',
                           enabledBorder: InputBorder.none,
@@ -119,11 +143,18 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           BoxShadow(offset: Offset(0, 5), blurRadius: 10)
                         ]),
                     child: TextFormField(
-                      controller: phoneCont,
+                      validator: (value) {
+                        if (value!.isEmpty) {
+                          return "Please enter some text";
+                        }
+                        return null;
+                      },
+                      onSaved: (value) {
+                        phone = value!;
+                      },
                       keyboardType: TextInputType.phone,
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                           icon: Icon(Icons.phone, color: Color(0xffF5591F)),
-                          // labelText: 'Email',
                           hintText: 'Phone Number',
                           enabledBorder: InputBorder.none,
                           focusedBorder: InputBorder.none),
@@ -140,21 +171,45 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           BoxShadow(offset: Offset(0, 5), blurRadius: 10)
                         ]),
                     child: TextFormField(
-                      controller: passwordCont,
+                      validator: (value) {
+                        if (value!.isEmpty) {
+                          return "Please enter some text";
+                        }
+                        return null;
+                      },
+                      onSaved: (value) {
+                        password = value!;
+                      },
                       decoration: const InputDecoration(
                           icon: Icon(Icons.vpn_key, color: Color(0xffF5591F)),
-                          // labelText: 'Email',
                           hintText: 'Enter password',
                           enabledBorder: InputBorder.none,
                           focusedBorder: InputBorder.none),
                     ),
                   ),
                   GestureDetector(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => LoginScreen()));
+                    onTap: () async {
+                      if (_formkey.currentState!.validate()) {
+                        _formkey.currentState!.save();
+                        User u = User(
+                          username: username,
+                          email: email,
+                          phone: phone,
+                          password: password,
+                        );
+
+                        bool isCreated = await registerUser(u);
+                        if (isCreated) {
+                          Navigator.pushNamed(context, '/login');
+                          MotionToast.success(
+                                  description: Text('New user created'))
+                              .show(context);
+                        } else {
+                          MotionToast.error(
+                                  description: Text('Failed to register'))
+                              .show(context);
+                        }
+                      }
                     },
                     child: Container(
                       margin:
@@ -183,22 +238,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       ),
                     ),
                   ),
-                  // Container(
-
-                  //   margin: EdgeInsets.only(left: 20, right: 20, top: 30),
-                  //   child: ElevatedButton(
-                  //       onPressed: () {},
-                  //       child: const Text(
-                  //         'SIGNUP',
-                  //         style: TextStyle(color: Colors.white),
-                  //       ),
-                  //       style: ElevatedButton.styleFrom(
-                  //           // primary: const Color(0xffF5591F),
-                  //           elevation: 50,
-                  //           minimumSize: Size(340, 54),
-                  //           shape: RoundedRectangleBorder(
-                  //               borderRadius: BorderRadius.circular(50)))),
-                  // ),
                   Container(
                     margin: const EdgeInsets.only(top: 10),
                     child: Row(

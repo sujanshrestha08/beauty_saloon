@@ -3,6 +3,9 @@ import 'package:touchofbeauty_flutter/models/categorymodel.dart';
 import 'package:touchofbeauty_flutter/models/servicemodel.dart';
 import 'package:touchofbeauty_flutter/screens/allservice.dart';
 import 'package:touchofbeauty_flutter/screens/allservice1.dart';
+import 'package:touchofbeauty_flutter/screens/appointment.dart';
+import 'package:touchofbeauty_flutter/screens/cart.dart';
+import 'package:touchofbeauty_flutter/screens/profile.dart';
 import 'package:touchofbeauty_flutter/utils/dataProvider.dart';
 import 'package:touchofbeauty_flutter/widgets/drawer.dart';
 
@@ -14,10 +17,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  int currrentIndex = 0;
-
-  int _selectedIndex = 0;
-
   late List<CategoryModel> categoryList;
   late List<AllServicesModel> allserviceList;
 
@@ -50,7 +49,7 @@ class _HomePageState extends State<HomePage> {
               const SizedBox(width: 5),
               Container(
                 height: 46,
-                width: 250,
+                width: 220,
                 decoration: const BoxDecoration(
                   color: Colors.white70,
                 ),
@@ -288,31 +287,6 @@ class _HomePageState extends State<HomePage> {
         //     },
         //   ),
         // ),
-
-        bottomNavigationBar: BottomNavigationBar(
-            type: BottomNavigationBarType.fixed,
-            selectedItemColor: Color(0xFFde8735),
-            // unselectedItemColor: Color(0xFFde8735),
-            currentIndex: currrentIndex,
-            onTap: (index) => setState(() => currrentIndex = index),
-            items: const [
-              BottomNavigationBarItem(
-                icon: Icon(Icons.home),
-                label: 'Home',
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.shopping_basket),
-                label: 'Cart',
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.schedule),
-                label: 'Appointment',
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.person),
-                label: 'Profile',
-              ),
-            ]),
       ),
     );
   }

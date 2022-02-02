@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:touchofbeauty_flutter/models/categorymodel.dart';
 import 'package:touchofbeauty_flutter/models/servicemodel.dart';
 import 'package:touchofbeauty_flutter/screens/allservice.dart';
+import 'package:touchofbeauty_flutter/screens/appointment.dart';
+import 'package:touchofbeauty_flutter/screens/cart.dart';
+import 'package:touchofbeauty_flutter/screens/profile.dart';
 import 'package:touchofbeauty_flutter/utils/dataProvider.dart';
 import 'package:touchofbeauty_flutter/widgets/drawer.dart';
 
@@ -16,9 +19,10 @@ class _HomePage2State extends State<HomePage2> {
   int currrentIndex = 0;
   final screens = [
     HomePage2(),
+    MyCart(),
+    AppointmentPage(),
+    Profile(),
   ];
-
-  int _selectedIndex = 0;
 
   late List<CategoryModel> categoryList;
   late List<AllServicesModel> allserviceList;
@@ -52,7 +56,7 @@ class _HomePage2State extends State<HomePage2> {
               const SizedBox(width: 5),
               Container(
                 height: 46,
-                width: 250,
+                width: 220,
                 decoration: const BoxDecoration(
                   color: Colors.white70,
                 ),

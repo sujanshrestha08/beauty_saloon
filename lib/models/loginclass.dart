@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
 class Login {
-  String email = " ";
+  String username = " ";
   String password = " ";
 
-  Login(String fullname, String password) {
-    this.email = email;
+  Login(String username, String password) {
+    this.username = username;
     this.password = password;
   }
 }

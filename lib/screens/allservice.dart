@@ -77,7 +77,9 @@ class _AllServiceState extends State<AllService> {
                           )),
                           trailing: ElevatedButton(
                             child: Text('Add to cart'),
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.pushNamed(context, '/cart');
+                            },
                           ),
                         ),
                       );

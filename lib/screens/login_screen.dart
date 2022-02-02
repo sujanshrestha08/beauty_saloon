@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:motion_toast/motion_toast.dart';
+import 'package:touchofbeauty_flutter/http/httpuser.dart';
+import 'package:touchofbeauty_flutter/screens/dashboard.dart';
 import 'package:touchofbeauty_flutter/screens/homepage.dart';
 import 'package:touchofbeauty_flutter/screens/homepage2.dart';
 import 'package:touchofbeauty_flutter/screens/signup_screen.dart';
@@ -13,8 +16,13 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   final _formkey = GlobalKey<FormState>();
-  String email = " ";
+  String username = " ";
   String password = " ";
+
+  Future<bool> loginPost(String username, String password) {
+    var res = HttpConnectUser().loginPosts(username, password);
+    return res;
+  }
 
   @override
   void dispose() {
@@ -82,16 +90,12 @@ class _LoginScreenState extends State<LoginScreen> {
                         ]),
                     child: TextFormField(
                       onSaved: (value) {
-                        email = value!;
+                        username = value!;
                       },
-                      validator: MultiValidator([
-                        EmailValidator(errorText: "enter correct email"),
-                        RequiredValidator(errorText: "Text required"),
-                      ]),
-                      keyboardType: TextInputType.emailAddress,
-                      decoration: InputDecoration(
+                      validator: RequiredValidator(errorText: "Text required"),
+                      decoration: const InputDecoration(
                           icon: Icon(Icons.email, color: Color(0xffF5591F)),
-                          hintText: 'Enter email',
+                          hintText: 'Enter username',
                           enabledBorder: InputBorder.none,
                           focusedBorder: InputBorder.none),
                     ),
@@ -114,7 +118,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       validator: MinLengthValidator(6,
                           errorText: "should be atleast 6 character"),
                       keyboardType: TextInputType.emailAddress,
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                           icon: Icon(Icons.vpn_key, color: Color(0xffF5591F)),
                           hintText: 'Enter password',
                           enabledBorder: InputBorder.none,
@@ -122,14 +126,18 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   ),
                   GestureDetector(
-                    onTap: () {
-                      if (_formkey.currentState!.validate()) {
-                        _formkey.currentState!.save();
-                        // Navigator.pushNamed(context, '/third');
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => HomePage()),
-                        );
+                    onTap: () async {
+                      _formkey.currentState!.save();
+                      var res = await loginPost(username, password);
+                      if (res) {
+                        Navigator.pushNamed(context, '/dashboard');
+                        MotionToast.success(
+                                description: Text('Login Successful'))
+                            .show(context);
+                      } else {
+                        MotionToast.error(
+                                description: Text('Login Unsuccessfull'))
+                            .show(context);
                       }
                     },
                     child: Container(

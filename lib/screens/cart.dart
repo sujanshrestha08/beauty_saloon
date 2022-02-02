@@ -14,19 +14,17 @@ class _MyCartState extends State<MyCart> {
       appBar: AppBar(
         title: const Text('My Cart'),
         centerTitle: true,
+        // actions: [IconButton(onPressed: () {}, icon: Icon(Icons.card_travel))],
         backgroundColor: Colors.deepOrange,
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            ElevatedButton(
-                onPressed: () {},
-                child: const ListTile(
-                  leading: Icon(Icons.done_rounded),
-                  title: Text('Make Appointement'),
-                ))
-          ],
-        ),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.deepOrange,
+        onPressed: () {},
+        child: Text("Book"),
+      ),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [],
       ),
     );
   }

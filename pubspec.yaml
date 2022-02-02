@@ -41,6 +41,9 @@ dependencies:
   form_field_validator: ^1.1.0
   provider: ^6.0.2
   url_launcher: ^6.0.18
+  intl: ^0.17.0
+  motion_toast: ^2.1.1
+  
 
 dev_dependencies:
   flutter_test:
