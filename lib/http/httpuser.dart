@@ -1,12 +1,12 @@
 import 'dart:convert';
-
 import 'package:http/http.dart';
 import 'package:touchofbeauty_flutter/models/user.dart';
 import 'package:touchofbeauty_flutter/response/user_resp.dart';
 
 class HttpConnectUser {
   String baseurl = 'http://10.0.2.2:90/';
-  String token = '';
+  static String token = '';
+
   Future<bool> registerPost(User user) async {
     Map<String, dynamic> userMap = {
       "username": user.username,
@@ -26,25 +26,49 @@ class HttpConnectUser {
     }
   }
 
-  Future<bool> loginPosts(String username, String password) async{
+  Future<bool> loginPosts(String username, String password) async {
     Map<String, dynamic> loginClient = {
       'username': username,
       'password': password
     };
 
-    try{
-      final response= await post(Uri.parse(baseurl + 'client/login'),
-      body: loginClient);
+    try {
+      final response =
+          await post(Uri.parse(baseurl + 'client/login'), body: loginClient);
 
-      final jsonData= jsonDecode(response.body) as Map;
-      token= jsonData['token'];
+      final jsonData = jsonDecode(response.body) as Map;
+      token = jsonData['token'];
+      print(token);
 
-      if(token.isNotEmpty){
-         return true;
+      if (token.isNotEmpty) {
+        return true;
       }
-    }catch(e){
+    } catch (e) {
       print(e);
     }
     return false;
+  }
+
+  Future<Map<String, dynamic>> viewProfile(String token) async {
+    String mytoken = 'Bearer $token';
+    Map<String, dynamic> userInfo = {};
+
+    try {
+      final response =
+          await get(Uri.parse(baseurl + 'client/dashboard'), headers: {
+        'Authorization': mytoken,
+      });
+
+      var userResponse = ResponseUser.fromJson(jsonDecode(response.body));
+
+      // print("response");
+      // print(response.body);
+      userInfo = userResponse.userData as Map<String, dynamic>;
+      // print('${userInfo}');
+      return userInfo;
+    } catch (e) {
+      print(e);
+    }
+    return {};
   }
 }

@@ -130,6 +130,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       _formkey.currentState!.save();
                       var res = await loginPost(username, password);
                       if (res) {
+                        print(res);
                         Navigator.pushNamed(context, '/dashboard');
                         MotionToast.success(
                                 description: Text('Login Successful'))

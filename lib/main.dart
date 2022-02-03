@@ -47,6 +47,7 @@ class _MyAppState extends State<MyApp> {
         // '/contact': (context) => ContactPage(),
         '/cart': (context) => MyCart(),
         '/appointment': (context) => AppointmentPage(),
+        '/logout': (context)=> LoginScreen(),
       },
     );
   }
