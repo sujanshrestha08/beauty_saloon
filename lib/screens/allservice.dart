@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:touchofbeauty_flutter/models/servicemodel.dart';
-import 'package:touchofbeauty_flutter/utils/dataProvider.dart';
+// import 'package:touchofbeauty_flutter/utils/dataProvider.dart';
 import 'package:flutter/services.dart' as rootBundle;
 
 class AllService extends StatefulWidget {

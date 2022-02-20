@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:http/http.dart';
 import 'package:touchofbeauty_flutter/models/user.dart';
 import 'package:touchofbeauty_flutter/response/user_resp.dart';
+import 'package:touchofbeauty_flutter/utils/shared_services.dart';
 
 class HttpConnectUser {
   String baseurl = 'http://10.0.2.2:90/';
@@ -38,6 +39,7 @@ class HttpConnectUser {
 
       final jsonData = jsonDecode(response.body) as Map;
       token = jsonData['token'];
+      SharedServices.setLoginDetails(token);
       print(token);
 
       if (token.isNotEmpty) {

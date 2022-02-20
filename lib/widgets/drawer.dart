@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+// import 'package:google_fonts/google_fonts.dart';
 import 'package:touchofbeauty_flutter/http/httpuser.dart';
 
 class DrawerSlide extends StatefulWidget {
@@ -17,10 +17,10 @@ class _DrawerSlideState extends State<DrawerSlide> {
   //   });
   // }
 
-  Future<Map<String, dynamic>> viewProfile() {
-    var res = HttpConnectUser().viewProfile(HttpConnectUser.token);
-    return res;
-  }
+  // Future<Map<String, dynamic>> viewProfile() {
+  //   var res = HttpConnectUser().viewProfile(HttpConnectUser.token);
+  //   return res;
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +45,7 @@ class _DrawerSlideState extends State<DrawerSlide> {
                   child: const Text(
                     "Touch Of Beauty",
                     style: TextStyle(
-                        fontFamily: "MoonDance",
+                        // fontFamily: "MoonDance",
                         fontSize: 20,
                         fontWeight: FontWeight.w600),
                   ),
@@ -99,9 +99,9 @@ class _DrawerSlideState extends State<DrawerSlide> {
                 style: TextStyle(fontSize: 16),
               ),
               onTap: () async {
-                Map<String, dynamic> user = await viewProfile();
+                // Map<String, dynamic> user = await viewProfile();
 
-                Navigator.pushNamed(context, '/profile', arguments: user);
+                // Navigator.pushNamed(context, '/profile', arguments: user);
               }),
           const Divider(
             thickness: 3,

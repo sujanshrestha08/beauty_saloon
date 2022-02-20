@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:introduction_screen/introduction_screen.dart';
+import 'package:touchofbeauty_flutter/screens/homepage.dart';
 import 'package:touchofbeauty_flutter/screens/homepage2.dart';
 import 'package:touchofbeauty_flutter/screens/login_screen.dart';
 
@@ -58,12 +59,13 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
   }
 
   void goToHome(context) => Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (_) => HomePage2()),
+        MaterialPageRoute(builder: (_) => HomePage()),
       );
 
   PageDecoration getPageDecoration() => PageDecoration(
-      titleTextStyle:
-          const TextStyle(fontSize: 28, fontWeight: FontWeight.w600),
-      bodyTextStyle: const TextStyle(fontSize: 20),
-      descriptionPadding: const EdgeInsets.all(16).copyWith(bottom: 0));
+        titleTextStyle:
+            const TextStyle(fontSize: 28, fontWeight: FontWeight.w600),
+        bodyTextStyle: const TextStyle(fontSize: 20),
+        // descriptionPadding: const EdgeInsets.all(16).copyWith(bottom: 0),
+      );
 }

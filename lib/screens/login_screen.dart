@@ -6,6 +6,8 @@ import 'package:touchofbeauty_flutter/screens/homepage.dart';
 import 'package:touchofbeauty_flutter/screens/homepage2.dart';
 import 'package:touchofbeauty_flutter/screens/signup_screen.dart';
 import 'package:form_field_validator/form_field_validator.dart';
+import 'package:touchofbeauty_flutter/services/login_services.dart';
+import 'package:touchofbeauty_flutter/utils/shared_services.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -18,11 +20,6 @@ class _LoginScreenState extends State<LoginScreen> {
   final _formkey = GlobalKey<FormState>();
   String username = " ";
   String password = " ";
-
-  Future<bool> loginPost(String username, String password) {
-    var res = HttpConnectUser().loginPosts(username, password);
-    return res;
-  }
 
   @override
   void dispose() {
@@ -130,7 +127,8 @@ class _LoginScreenState extends State<LoginScreen> {
                       _formkey.currentState!.save();
                       var res = await loginPost(username, password);
                       if (res) {
-                        print(res);
+                        // print(res);
+
                         Navigator.pushNamed(context, '/dashboard');
                         MotionToast.success(
                                 description: Text('Login Successful'))

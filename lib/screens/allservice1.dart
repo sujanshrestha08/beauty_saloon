@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 class Services extends StatefulWidget {
-
   final String title;
   final List<String> datas;
 
@@ -12,8 +11,6 @@ class Services extends StatefulWidget {
 }
 
 class _ServicesState extends State<Services> {
-  
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,9 +24,8 @@ class _ServicesState extends State<Services> {
           Padding(
             padding: const EdgeInsets.all(10.0),
             child: Column(
-             
               children: [
-                 Text('${widget.title}'),
+                Text(widget.title),
                 ...widget.datas.map((servicedata) {
                   return Column(
                     children: [

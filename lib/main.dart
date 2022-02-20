@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:touchofbeauty_flutter/models/categories_model.dart';
 import 'package:touchofbeauty_flutter/screens/about.dart';
 import 'package:touchofbeauty_flutter/screens/appointment.dart';
 import 'package:touchofbeauty_flutter/screens/cart.dart';
@@ -10,6 +12,12 @@ import 'package:touchofbeauty_flutter/screens/login_screen.dart';
 // import 'package:touchofbeauty_flutter/screens/homepage2.dart';
 import 'package:touchofbeauty_flutter/screens/onboardingscreen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:touchofbeauty_flutter/screens/services.dart';
+import 'package:touchofbeauty_flutter/services/cart_provider.dart';
+import 'package:touchofbeauty_flutter/services/get_appointment_services.dart';
+import 'package:touchofbeauty_flutter/services/get_categories_services.dart';
+import 'package:touchofbeauty_flutter/services/get_services.dart';
+import 'package:touchofbeauty_flutter/services/time_provider.dart';
 
 int? initScreen;
 
@@ -18,7 +26,13 @@ Future<void> main() async {
   SharedPreferences preferences = await SharedPreferences.getInstance();
   initScreen = await preferences.getInt('initScreen');
   await preferences.setInt('initScreen', 1);
-  runApp(const MyApp());
+  runApp(MultiProvider(providers: [
+    ChangeNotifierProvider(create: (_) => GetCategory()),
+    ChangeNotifierProvider(create: (_) => GetServicesProvider()),
+    ChangeNotifierProvider(create: (_) => GetAppointment()),
+    ChangeNotifierProvider(create: (_) => CartProvider()),
+    ChangeNotifierProvider(create: (_) => TimeProvider()),
+  ], child: const MyApp()));
 }
 
 class MyApp extends StatefulWidget {
@@ -35,7 +49,7 @@ class _MyAppState extends State<MyApp> {
       debugShowCheckedModeBanner: false,
       // home: OnBoardingPage(),
       initialRoute:
-          initScreen == 0 || initScreen == null ? 'onboard' : '/dashboard',
+          initScreen == 0 || initScreen == null ? 'onboard' : 'onboard',
 
       routes: {
         'home': (context) => HomePage(),
@@ -44,10 +58,10 @@ class _MyAppState extends State<MyApp> {
         'onboard': (context) => OnBoardingPage(),
         '/about': (context) => AboutPage(),
         '/faqs': (context) => FAQS(),
-        // '/contact': (context) => ContactPage(),
-        '/cart': (context) => MyCart(),
+        // '/services': (context) => Service(id:, name),
+        // '/cart': (context) => MyCart(),
         '/appointment': (context) => AppointmentPage(),
-        '/logout': (context)=> LoginScreen(),
+        '/logout': (context) => LoginScreen(),
       },
     );
   }
